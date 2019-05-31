@@ -26,13 +26,13 @@
       content-class="bg-grey-2"
     >
       <q-list>
-        <q-item-label header>Essential Links</q-item-label>
+        <q-item-label header>Repositório: {{ this.title }}</q-item-label>
           <q-item clickable to="/listagem">
             <q-item-section avatar>
               <q-icon name="list" />
             </q-item-section>
             <q-item-section>
-              <q-item-label>Listagem de Insues</q-item-label>
+              <q-item-label>Listagem de Issues</q-item-label>
             </q-item-section>
           </q-item>
       </q-list>
@@ -46,16 +46,21 @@
 
 <script>
 import { openURL } from 'quasar'
+import Store from '../store'
 
 export default {
   name: 'Dashboard',
   data () {
     return {
-      leftDrawerOpen: this.$q.platform.is.desktop
+      leftDrawerOpen: this.$q.platform.is.desktop,
+      title: ''
     }
   },
   methods: {
     openURL
+  },
+  mounted () {
+    this.title = Store.state.owner + '/' + Store.state.repository
   }
 }
 </script>

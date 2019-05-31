@@ -11,7 +11,8 @@ const routes = [
     path: '/listagem',
     component: () => import('layouts/Dashboard.vue'),
     children: [
-      { path: '', component: () => import('pages/Listagem.vue') }
+      { path: '', component: () => import('pages/Listagem.vue') },
+      { path: '/issue/:number', component: () => import('pages/Issue.vue') }
     ]
   }
 ]

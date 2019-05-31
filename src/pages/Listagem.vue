@@ -2,7 +2,7 @@
   <q-page class="q-pa-xl">
     <h3 class="q-mt-none">Issues</h3>
     <q-list>
-      <q-item v-for="issue in issues" :key="issue.id" clickable v-ripple>
+      <q-item v-for="issue in issues" :key="issue.number" clickable v-ripple :to="'/issue/' + issue.number">
         <q-item-section side>
           <q-icon v-if="issue.state == 'open'" name="info" color="green" />
           <q-icon v-if="issue.state == 'closed'" name="cancel" color="red" />
@@ -12,9 +12,9 @@
           <q-item-label>{{ issue.title }}</q-item-label>
         </q-item-section>
 
-        <q-item-section side top>
+        <!-- <q-item-section side top>
           <q-item-label caption>5 min ago</q-item-label>
-        </q-item-section>
+        </q-item-section> -->
       </q-item>
     </q-list>
   </q-page>

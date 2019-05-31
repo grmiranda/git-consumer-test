@@ -8,5 +8,8 @@ export default {
         state: state
       }
     })
+  },
+  getIssueByNumber: (owner, repository, number) => {
+    return Vue.prototype.$axios.get('repos/' + owner + '/' + repository + '/issues/' + number)
   }
 }
