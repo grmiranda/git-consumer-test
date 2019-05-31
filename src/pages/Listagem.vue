@@ -4,17 +4,16 @@
     <q-list bordered separator>
       <q-item v-for="issue in issues" :key="issue.number" clickable v-ripple :to="'/issue/' + issue.number">
         <q-item-section side>
-          <q-badge v-if="issue.state == 'open'" color="green">Open</q-badge>
-          <q-badge v-else color="red">Close</q-badge>
+          <q-icon v-if="issue.state == 'open'" name="info" color="green" />
+          <q-icon v-if="issue.state == 'closed'" name="cancel" color="red" />
         </q-item-section>
 
-        <q-item-section>
+        <q-item-section >
           <q-item-label>{{ issue.title }}</q-item-label>
+          <div class="flex q-mt-sm">
+            <q-badge v-for="label in issue.labels" :key="label.id" class="q-mr-sm">{{ label.name }}</q-badge>
+          </div>
         </q-item-section>
-
-        <!-- <q-item-section side top>
-          <q-item-label caption>5 min ago</q-item-label>
-        </q-item-section> -->
       </q-item>
     </q-list>
   </q-page>

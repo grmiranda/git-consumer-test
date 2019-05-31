@@ -1,6 +1,10 @@
 <template>
   <q-page class="q-pa-xl">
-    <h3 class="q-mt-none">Issue #{{ this.number }} <h6 class="q-mt-none text-grey-5">{{ this.title }}</h6></h3>
+    <h3 class="q-mt-none">
+      Issue #{{ this.number }}
+      <q-badge v-for="label in issue.labels" :key="label.id" align="middle" class="q-mr-sm">{{ label.name }}</q-badge>
+      <h6 class="q-mt-none text-grey-5">{{ this.title }}</h6>
+    </h3>
     <div class="row">
       <q-form @submit="saveIssue" class="col q-pr-md">
       <q-input
