@@ -1,11 +1,11 @@
 <template>
   <q-page class="q-pa-xl">
     <h3 class="q-mt-none">Issues</h3>
-    <q-list>
+    <q-list bordered separator>
       <q-item v-for="issue in issues" :key="issue.number" clickable v-ripple :to="'/issue/' + issue.number">
         <q-item-section side>
-          <q-icon v-if="issue.state == 'open'" name="info" color="green" />
-          <q-icon v-if="issue.state == 'closed'" name="cancel" color="red" />
+          <q-badge v-if="issue.state == 'open'" color="green">Open</q-badge>
+          <q-badge v-else color="red">Close</q-badge>
         </q-item-section>
 
         <q-item-section>

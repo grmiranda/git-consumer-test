@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-xl">
-    <h3 class="q-mt-none">Issue #{{ this.number }}</h3>
+    <h3 class="q-mt-none">Issue #{{ this.number }} <h6 class="q-mt-none text-grey-5">{{ this.title }}</h6></h3>
     <div class="row">
       <q-form @submit="saveIssue" class="col q-pr-md">
       <q-input
@@ -14,16 +14,18 @@
         filled
         v-model="this.issue.body"
         label="Descrição"
+        type="textarea"
         lazy-rules
         :rules="[ val => val && val.length > 0 || 'Obrigatório']"
       />
-
       <div>
         <q-btn label="Salvar" type="submit" color="primary"/>
+        <q-btn v-if="this.issue.state == 'open'" label="Close Issue" type="submit" color="negative" flat class="q-ml-lg"/>
+        <q-btn v-else label="Reopen Issue" type="submit" color="positive" flat class="q-ml-lg"/>
       </div>
     </q-form>
     <div class="col q-pl-md">
-      dasd
+      <h6 class="q-mt-none">Comentários:</h6>
     </div>
     </div>
   </q-page>
@@ -40,6 +42,7 @@ export default {
   name: 'Issue',
   data () {
     return {
+      title: '',
       issue: {},
       number: 0
     }
@@ -51,7 +54,7 @@ export default {
   },
   mounted () {
     this.number = this.$route.params.number
-
+    this.title = Store.state.owner + '/' + Store.state.repository
     IssuesService.getIssueByNumber(Store.state.owner, Store.state.repository, this.number).then(response => {
       this.issue = response.data
       console.log('Issue #' + this.number + ' caregada')
