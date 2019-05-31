@@ -1,3 +1,3 @@
 # Quasar App
 
-> WIP
+> I'll describe it when it's done
