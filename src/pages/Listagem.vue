@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-xl">
-    <h3 class="q-mt-none">Issues</h3>
+    <h3 class="q-mt-none flex">Issues <q-btn round color="positive" icon="add" to="/issue/" /></h3>
     <q-list bordered separator>
       <q-item v-for="issue in issues" :key="issue.number" clickable v-ripple :to="'/issue/' + issue.number">
         <q-item-section side>
@@ -39,8 +39,6 @@ export default {
   mounted () {
     IssuesService.listRepoIssues(Store.state.owner, Store.state.repository, this.filterState).then(response => {
       this.issues = response.data
-      console.log('Issues caregadas')
-      console.log(this.issues[1])
     })
   }
 }

@@ -12,7 +12,15 @@ const routes = [
     component: () => import('layouts/Dashboard.vue'),
     children: [
       { path: '', component: () => import('pages/Listagem.vue') },
+      { path: '/issue/', component: () => import('pages/Issue.vue') },
       { path: '/issue/:number', component: () => import('pages/Issue.vue') }
+    ]
+  },
+  {
+    path: '/user/login/callback/',
+    component: () => import('layouts/Dashboard.vue'),
+    children: [
+      { path: '', component: () => import('pages/UserCallback.vue') }
     ]
   }
 ]

@@ -12,14 +12,16 @@ Vue.use(Vuex)
 
 // app initial state
 const state = {
-  repository: 'vagas',
-  owner: 'devfsa'
-  // repository: 'quasar',
-  // owner: 'quasarframework'
+  repository: 'git-consumer-test',
+  owner: 'grmiranda',
+  user: {}
 }
 
 // define possible mutations
 const mutations = {
+  setOAuthCode (state, code) {
+    state.OAuthCode = code
+  }
 }
 
 export default new Vuex.Store({
