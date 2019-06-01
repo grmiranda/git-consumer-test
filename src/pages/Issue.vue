@@ -65,23 +65,28 @@ export default {
         // editar
         IssuesService.updateIssue(Store.state.owner, Store.state.repository, this.number, this.issue.title, this.issue.body).then(response => {
           this.issue = response.data
+          alert('Issue salva com sucesso')
         })
       } else {
         // cadastrar
         IssuesService.createIssue(Store.state.owner, Store.state.repository, this.issue.title, this.issue.body).then(response => {
           this.issue = response.data
           this.number = this.issue.number
+          alert('Issue cadastrada com sucesso')
+          this.$router.push({ path: '/listagem' })
         })
       }
     },
     LockIssue () {
       IssuesService.lockIssue(Store.state.owner, Store.state.repository, this.number).then(response => {
         this.issue.locked = true
+        alert('Issue bloqueada')
       })
     },
     UnlockIssue () {
       IssuesService.unlockIssue(Store.state.owner, Store.state.repository, this.number).then(response => {
         this.issue.locked = false
+        alert('Issue desloqueada')
       })
     }
   },

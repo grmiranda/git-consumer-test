@@ -4,13 +4,13 @@
     <q-list bordered separator>
       <q-item v-for="issue in issues" :key="issue.number" clickable v-ripple :to="'/issue/' + issue.number">
         <q-item-section side>
-          <q-icon v-if="issue.state == 'open'" name="info" color="green" />
-          <q-icon v-if="issue.state == 'closed'" name="cancel" color="red" />
+          <q-icon v-if="issue.state == 'open'" name="info" color="green" class="list-item-icon" />
+          <q-icon v-if="issue.state == 'closed'" name="cancel" color="red" class="list-item-icon" />
         </q-item-section>
 
         <q-item-section >
-          <q-item-label>{{ issue.title }}</q-item-label>
-          <div class="flex q-mt-sm">
+          <q-item-label class="list-item-title" >{{ issue.title }}</q-item-label>
+          <div v-if="issue.labels[0]" class="flex q-mt-sm list-item-badge">
             <q-badge v-for="label in issue.labels" :key="label.id" class="q-mr-sm">{{ label.name }}</q-badge>
           </div>
         </q-item-section>
