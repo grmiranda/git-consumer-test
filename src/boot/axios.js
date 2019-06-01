@@ -3,6 +3,6 @@ import axios from 'axios'
 export default async ({ Vue }) => {
   Vue.prototype.$axios = axios.create({
     baseURL: 'https://api.github.com/',
-    headers: { 'Authorization': 'token 7bf0772dd711b9e5541516148ef4e30bc0019c85' }
+    headers: { 'Authorization': 'token 91e172964e993b2ed7621a7693c5bb27d64246f1' }
   })
 }
