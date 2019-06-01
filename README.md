@@ -1,3 +1,3 @@
 # Quasar App
 
-> I'll describe it when it's done
+> just do "npm install" then "quasar dev".
